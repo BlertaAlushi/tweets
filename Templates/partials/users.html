@@ -1,0 +1,5 @@
+<ul>
+{% for user in results %}
+<li><a href="/user/{{user['id']}}"> {{user['first_name']}} {{user['last_name']}}</a></li>
+{% endfor %}
+</ul>

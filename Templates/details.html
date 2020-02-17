@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Thought Board</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brands.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brands.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/solid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/regular.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+  </style>
+</head>
+<body>
+    <div class = "container">
+        <div class="row">
+            <div class="col-11 text-right">
+                <a href="/index"><i class="fas fa-home"></i> </a>
+            </div>
+            <div class="col-1 text-right">
+                <a href="/destroy"><i class="fas fa-user-cog"></i></a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-2 text-right">
+                <p>Driton says:</p>
+            </div>
+            <div class="col-4">
+                <div class="w-100 border border-secondary h-100">
+                    <p>{{thought['thought']}}</p>
+                </div>
+                <br>
+                {% if thought['id'] not in likes %}
+                <div class="row">
+                    <div class="col text-right">
+                    <a href="/like/{{thought['id']}}/{{session['user_id']}}" ><i style="font-size:15px;"class="far fa-thumbs-up"></i> Like</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="row">
+                    <div class="col text-right">
+                    <a href="/unlike/{{thought['id']}}/{{session['user_id']}}" id="unlike"><i style="font-size:15px;" class="fas fa-thumbs-up"></i> Like</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            
+            <div class="col-6">
+                <p>People who liked this thought:</p>
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{user['first_name']}}</td>
+                    <td>{{user['last_name']}}</td>
+                </tr>
+                {% endfor %}
+
+                {% if current %}
+                <tr>
+                    <td>{{current[0]['first_name']}}</td>
+                    <td>{{current[0]['last_name']}}</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

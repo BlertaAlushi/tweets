@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Thought Board</title>
+  <meta charset="utf-8">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='js/general.js') }}"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brands.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/brands.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/solid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/regular.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>  
+  </style>
+</head>
+<body>
+    <div class = "container-fluid">
+        <div class="row" id="header">
+            <div class="col-2">
+
+            </div>
+            <div class="col-5">
+                <form>
+                    <input type="text" name="search">
+                    <a href='#'><i class="fas fa-search"></i></a>
+                </form>
+            </div>
+            <div class="col-5">
+                <ul class='menu'>
+                    <li>
+                        <a href="/user/{{session['user_id']}}"><i class="fas fa-user-circle"></i><span> {{session['name']}}</span></a> 
+                    </li>
+                    <li>
+                        <a href="/index"><i class="fas fa-home"></i></a>     
+                    </li>
+                    <li>
+                        <a href="/notifications/{{session['user_id']}}"><i class="fas fa-bell"></i> {% if user_notifications[0]['notify'] > 0 %} <span style=" background-color:red;"class="text-light">{{user_notifications[0]['notify']}}</span> {% endif %}</a>
+                    </li>
+                    <li>
+                        <a href="/destroy"><i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+        <div class="row user">
+            <div class="col-4"></div>
+            <div class="col-4" >
+            
+            <ul class='users'>
+                <li>People who likes this post:</li>
+                {% for user in users %}
+                <li><a href="/user/{{user['user_id']}}"><i class="fas fa-user-circle"></i> <p>{{user['first_name']}} {{user['last_name']}}</p></a></li>
+                {% endfor %}
+                {% if current %}
+                <li><a href="/user/{{current[0]['user_id']}}"><i class="fas fa-user-circle"></i> <p>{{current[0]['first_name']}} {{current[0]['last_name']}}</p></a></li>
+                {% endif %}
+            </ul>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
