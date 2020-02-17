@@ -11,9 +11,10 @@
 </head>
 <body>
     <div class = "container">
-        <h2 class="font-weight-normal">Welcome!</h2>
+        <h2 class="font-weight-normal text-center">Welcome!</h2>
         <div class="row">
-            <div class="col">
+            <div class="col-4"></div>
+            <div class="col-4">
                 <form action="/register" method="POST">
                        <div class="form-group">
                           <label>First Name:</label>
@@ -41,8 +42,10 @@
                    <p>Already have an account? <a href="/">Login</a></p>
                 </form>
             </div>
+            <div class="col-4"></div>
         </div>
         <div class="row">
+            <div class="col-4"></div>
             <div class="col-6">
                 <ul class="list-group list-group-flush text-info">
                     {% with messages = get_flashed_messages() %}    
@@ -54,6 +57,7 @@
                     {% endwith %}
                 </ul>
             </div>
+            <div class="col-4"></div>
         </div>
     </div>
 </body>

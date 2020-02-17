@@ -11,6 +11,8 @@
 </head>
 <body>
     <div class = "container">
+            <div class="row">
+                <div class="col-4"></div>
             <div class="col">
                 <form action="/login" method="POST">
                     <fieldset>
@@ -30,8 +32,11 @@
                     <p>Don't have an account? <a href="/register">Register</a></p>
                  </form>
             </div>
+            <div class="col-4"></div>
+            </div>
             <div class="row">
-                <div class="col-6">
+                <div class="col-4"></div>
+                <div class="col-4">
                     <ul class="list-group list-group-flush text-info">
                         {% with messages = get_flashed_messages() %}    
                             {% if messages %}                           
@@ -42,6 +47,7 @@
                         {% endwith %}
                     </ul>
                 </div>
+                <div class="col-4"></div>
             </div>
         </div>
 </body>
